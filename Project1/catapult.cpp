@@ -16,9 +16,8 @@ double radians(double degrees)
 }
 
 /*
-*	Find time airborne
-*/
-
+ *	Find time airborne
+ */
 double flight_time(double v0, double theta, double h)
 {
 	double b = v0 * sin(theta);
@@ -27,12 +26,27 @@ double flight_time(double v0, double theta, double h)
 }
 
 /*
-*	Range, no air resistance
-*/
-
+ *	Range, no air resistance
+ */
 double flight_distance(double v0, double theta, double t)
 {
 	return v0 * cos(theta) * t;
+}
+
+/*
+ * Potential energy of a spring
+ */
+double spring_potential(double k, double x)
+{
+    return k/2 * pow(x, 2);
+}
+
+/*
+ * Find velocity from kinetic energy
+ */
+double velocity(double m, double kinetic)
+{
+    return sqrt(2*kinetic/m);
 }
 
 using namespace std;
