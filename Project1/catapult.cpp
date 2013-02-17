@@ -1,6 +1,4 @@
 #include "catapult.h"
-#include <math.h>
-#include <stdio.h>
 #include <iostream>
 
 
