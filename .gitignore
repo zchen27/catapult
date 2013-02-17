@@ -179,6 +179,21 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
+###########
+## Annoying Xcode crap
+###########
+
+UserInterfaceState.xcuserstate
+build
+*.pbxuser
+*.perspectivev3
+*.mode1v3
+*~
+*~.nib
+*~.xib 
+.DS_Store 
+xcuserdata/
+
 # Mac crap
 .DS_Store
 
