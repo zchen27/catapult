@@ -34,7 +34,25 @@ double flight_distance(double v0, double theta, double t)
 }
 
 /*
+*	Now with air resistance (unfinished)
+*/
+
+double flight_time(double v0, double theta, double h, double c)
+{
+	double v0y = v0 * sin(theta);
+	return 0;
+}
+
+double flight_distance(double v0, double theta, double h, double c)
+{
+	double v0x = v0 * cos(theta);
+	return 0;
+}
+
+
+/*
  * Potential energy of a spring
+ * Remove parameter k when design is complete
  */
 double spring_potential(double k, double x)
 {
@@ -44,9 +62,18 @@ double spring_potential(double k, double x)
 /*
  * Find velocity from kinetic energy
  */
-double velocity(double m, double kinetic)
+/*double velocity(double m, double kinetic)
 {
     return sqrt(2*kinetic/m);
+}*/
+
+/*
+*	Slightly easier way of finding velocity with Ke=I * omega ^ 2
+*	Remove parameter I when design is complete
+*/
+double velocity(double usp, double I)
+{
+	return sqrt(2*usp/I);
 }
 
 using namespace std;
