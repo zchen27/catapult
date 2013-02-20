@@ -12,8 +12,9 @@ public:
 	#define RHO 1.293
 	#define E 2.71828
 	#define VERY_SMALL_NUMBER pow(1.0,-8.0)
-	//#define K
-	//#define I
+	#define R 0.0 //Temp Value
+	#define K 0.0 //Temp Value
+	#define I 0.0 //Temp Value
 	#ifndef M_PI
 	#define PI atan(1.0)*4
 	#else

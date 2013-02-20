@@ -52,11 +52,10 @@ double flight_distance(double v0, double theta, double h, double c)
 
 /*
  * Potential energy of a spring
- * Remove parameter k when design is complete
  */
-double spring_potential(double k, double x)
+double spring_potential(double x)
 {
-    return k/2 * pow(x, 2);
+    return K/2 * pow(x, 2);
 }
 
 /*
@@ -69,11 +68,10 @@ double spring_potential(double k, double x)
 
 /*
 *	Slightly easier way of finding velocity with Ke=I * omega ^ 2
-*	Remove parameter I when design is complete
 */
-double velocity(double usp, double I)
+double velocity(double usp)
 {
-	return sqrt(2*usp/I);
+	return sqrt(2*usp/I) * R;
 }
 
 using namespace std;
