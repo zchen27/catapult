@@ -37,13 +37,13 @@ double flight_distance(double v0, double theta, double t)
 *	Now with air resistance (unfinished)
 */
 
-double flight_time(double v0, double theta, double h, double c)
+double flight_time_ar(double v0, double theta, double h, double c)
 {
 	double v0y = v0 * sin(theta);
 	return 0;
 }
 
-double flight_distance(double v0, double theta, double h, double c)
+double flight_distance_ar(double v0, double theta, double h, double c)
 {
 	double v0x = v0 * cos(theta);
 	return 0;
@@ -75,6 +75,11 @@ double velocity(double usp, double i)
 {
 	return sqrt(2*usp/i);
 }
+
+/*
+ * Calculate rotational inertia
+ */
+
 
 using namespace std;
 
