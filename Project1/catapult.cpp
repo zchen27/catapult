@@ -78,8 +78,17 @@ double velocity(double usp, double i)
 
 /*
  * Calculate rotational inertia
+ * len          Total length of throwing arm
+ * offset       Distance from pivot to center of mass (positive = right)
+ * rod_mass     Mass of throwing arm
+ * proj_mass    Mass of projectile
  */
-
+double rotational_inertia(double len, double offset, double rod_mass, double proj_mass)
+{
+    double i_bar = rod_mass*pow(len,2)/2 + rod_mass*pow(offset,2)/2;
+    double i_proj = proj_mass*pow(len/2+offset,2)/2;
+    return i_bar + i_proj;
+}
 
 using namespace std;
 
@@ -90,7 +99,9 @@ int main()
 	double h;
 	double t;
 	double x;
-
+    double u;
+    
+    v0 = velocity(u, rotational_inertia(5, 0, 1, 1));
 	theta = radians(theta);
 	t = flight_time(v0, theta, h);
 	x = flight_distance(v0, theta, t);
