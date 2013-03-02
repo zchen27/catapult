@@ -1,6 +1,10 @@
 #include "catapult.h"
 #include <iostream>
+#include <string>
+#include <sstream>
 
+double m;
+double r;
 
 catapult::catapult(void)
 {
@@ -8,6 +12,11 @@ catapult::catapult(void)
 
 catapult::~catapult(void)
 {
+}
+
+void set_up_ball(double m, double r)
+{
+	
 }
 
 double radians(double degrees)
@@ -40,13 +49,13 @@ double flight_distance(double v0, double theta, double t)
 double flight_time_ar(double v0, double theta, double h, double c)
 {
 	double v0y = v0 * sin(theta);
-	return 0;
+	return sqrt(m / (c * G)) * (atan(sqrt(c / (m*G)) * v0y) - acos(1 / (exp(c * h /m) * sqrt(1 + c / (m*G) * pow(v0y,2)))));
 }
 
-double flight_distance_ar(double v0, double theta, double h, double c)
+double flight_distance_ar(double v0, double theta, double h, double c, double t)
 {
 	double v0x = v0 * cos(theta);
-	return 0;
+	return m / c * log(1 + v0x * c * t / m);
 }
 
 
