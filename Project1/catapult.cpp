@@ -86,8 +86,8 @@ double velocity(double usp, double i)
  */
 double rotational_inertia(double len, double offset, double rod_mass, double proj_mass)
 {
-    double i_bar = rod_mass*pow(len,2)/2 + rod_mass*pow(offset,2)/2;
-    double i_proj = proj_mass*pow(len/2+offset,2)/2;
+    double i_bar = rod_mass*pow(len,2)/3;
+    double i_proj = proj_mass*pow(len,2);
     return i_bar + i_proj;
 }
 
