@@ -69,14 +69,6 @@ double spring_potential(double k, double x)
 }
 
 /*
- * Find velocity from kinetic energy
- */
-/*double velocity(double m, double kinetic)
-{
-    return sqrt(2*kinetic/m);
-}*/
-
-/*
 *	Slightly easier way of finding velocity with Ke=I * omega ^ 2
 *	Remove parameter I when design is complete
 */
@@ -113,7 +105,7 @@ using namespace std;
 
 int main()
 {
-	double v0;
+    double v0;
 	double theta;
 	double h;
 	double t;
