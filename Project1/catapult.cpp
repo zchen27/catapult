@@ -99,6 +99,16 @@ double rotational_inertia(double len, double offset, double rod_mass, double pro
     return i_bar + i_proj;
 }
 
+/*
+ * Calculate the length of the spring using law of cosines
+ * height       Height of the support the spring is attached to
+ * length       Length of the throwing arm, from aforementioned support to spring
+ * angle        Angle between throwing arm and support
+ */
+double spring_length(double height, double length, double angle) {
+    return sqrt(pow(height,2) + pow(length,2) + 2*height*length*cos(angle));
+}
+
 using namespace std;
 
 int main()
