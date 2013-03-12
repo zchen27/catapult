@@ -101,12 +101,25 @@ double spring_length(double height, double length, double angle) {
     return sqrt(pow(height,2) + pow(length,2) - 2*height*length*cos(angle));
 }
 
+/*
+ * Find the maximum release angle for a certain arm length
+ */
+double max_release(double length, double height) {
+    return acos(height/length);
+}
+
 using namespace std;
 
-int main()
+int main(int argc, const char * argv[])
 {
-    double arm_len = .28;
     double height = .20;
+    double arm_len = 0.0;
+    if(argc>1) {
+        arm_len = atof(argv[1]);
+    }
+    if(arm_len==0.0){
+        arm_len = .20*sqrt(2);
+    }
     double k = 691.88;
     double stretch;
     double final;
@@ -116,12 +129,13 @@ int main()
 	double x;
     double u = 20.669;
     
-    theta = radians(theta);
+    theta = max_release(arm_len, height);
+    cout << "Release angle: " << theta << endl;
     stretch = spring_length(height, arm_len, radians(80));
     final = spring_length(height, arm_len, theta);
-    cout << final << endl;
     cout << stretch << endl;
-    //u = spring_potential(k, stretch)-spring_potential(k, final);
+    cout << final << endl;
+    u = spring_potential(k, stretch)-spring_potential(k, final);
     cout << u << endl;
     cout << rotational_inertia(arm_len, 0, .1, .021) << endl;
     v0 = velocity(u, rotational_inertia(arm_len, 0, .1, .021))*arm_len;
