@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <fstream>
 
 double m;
 double r;
@@ -143,5 +144,13 @@ int main(int argc, const char * argv[])
 	t = flight_time(v0, theta, height);
 	x = flight_distance(v0, theta, t);
 	cout << x << endl;
+
+	ofstream results;
+	results.open("results.txt");
+	results << "test\n";
+	results.close();
+	//insert while loop that cycles through all possible angles by increments of 1 degree.
+
+
 	return 0;
 }
