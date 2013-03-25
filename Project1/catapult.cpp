@@ -15,6 +15,14 @@ catapult::~catapult(void)
 {
 }
 
+double work_spring(double theta)
+{
+	double W;
+	//W = fnInt(torque, theta, 0, thea)
+	W = (3.78025 * pow(theta, 4)) + (16.751 * pow(theta, 3)) + (16.5485 * (theta, 2)) + (0.7801 * theta) /*Indefinite integral at 0 is 0*/;
+	return W;
+}
+
 void set_up_ball(double m, double r)
 {
 	
@@ -113,7 +121,7 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-    double height = .20;
+    /*double height = .20;
     double arm_len = 0.0;
     if(argc>1) {
         arm_len = atof(argv[1]);
@@ -134,23 +142,61 @@ int main(int argc, const char * argv[])
     cout << "Release angle: " << theta << endl;
     stretch = spring_length(height, arm_len, radians(80));
     final = spring_length(height, arm_len, theta);
-    cout << stretch << endl;
-    cout << final << endl;
-    u = spring_potential(k, stretch)-spring_potential(k, final);
-    cout << u << endl;
-    cout << rotational_inertia(arm_len, 0, .1, .021) << endl;
+    cout <<"stretch: " << stretch << endl;
+    cout <<"final: " << final << endl;
+    //u = spring_potential(k, stretch)-spring_potential(k, final);
+	u = work_spring(theta);
+    cout <<"U: "<< u << endl;
+    cout <<"I: "<< rotational_inertia(arm_len, 0, .1, .021) << endl;
     v0 = velocity(u, rotational_inertia(arm_len, 0, .1, .021))*arm_len;
-    cout << v0 << endl;
+    cout <<"v0: "<< v0 << endl;
 	t = flight_time(v0, theta, height);
 	x = flight_distance(v0, theta, t);
-	cout << x << endl;
+	cout <<"x: "<< x << endl;
+	*/
 
+	double thetad = 0;
+	double thetar = radians(thetad);
+	double U;
+	double I;
+	double omega;
+	double v0;
+	double t;
+	double x;
+	while (thetad <= 40)
+	{
+		thetar = radians(thetad);
+		U = work_spring(thetar);
+		I = rotational_inertia(0.25, 0.02, 0.1, 0.021);
+		omega = velocity(U, I);
+		v0 = omega * 0.25;
+		t = flight_time(v0, 0.61575, sin(0.61575) * 0.25 + 0.6096);
+		x = flight_distance(v0, 0.61575, t);
+		
+		cout << "thetar: " << thetar << endl;
+		cout << "U: "<< U << endl;
+		cout << "omega: " << omega << endl;
+		cout << "v0: " << v0 << endl;
+		cout << "t: " << t<< endl;
+		cout << "x: " << x << endl;
+		cout << "" << endl;
+		thetad++;
+	}
+
+	
 	ofstream results;
 	results.open("results.txt");
 	results << "test\n";
-	results.close();
+	
+	 double i = 0;
+	while(i <= 45)
+	{
+		results << work_spring(i);
+		results << "\t";
+		i += 0.5;
+	}
+
 	//insert while loop that cycles through all possible angles by increments of 1 degree.
-
-
+	results.close();
 	return 0;
 }
