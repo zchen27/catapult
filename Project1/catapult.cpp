@@ -4,8 +4,8 @@
 #include <sstream>
 #include <fstream>
 
-double m = 0.1; //kg
-double r = 0.015; //m
+double m = 0.2; //kg
+double r = 0.0125; //m
 //double c = 0.5 * RHO * CD * PI * pow(r, 2);
 double c = VERY_SMALL_NUMBER;
 catapult::catapult(void)
