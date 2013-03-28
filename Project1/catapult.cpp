@@ -8,13 +8,6 @@ double m = 0.2; //kg
 double r = 0.0125; //m
 //double c = 0.5 * RHO * CD * PI * pow(r, 2);
 double c = VERY_SMALL_NUMBER;
-catapult::catapult(void)
-{
-}
-
-catapult::~catapult(void)
-{
-}
 
 double work_spring(double theta)
 {
